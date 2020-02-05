@@ -1,0 +1,28 @@
+/node_modules
+/public/storage
+resources/assets/themes/*
+/public/hot
+/storage/*.key
+!/vendor
+# dont ignore the lti dir, since it's no longer maintained and we
+# made some changes (removed ssl3, made it proxy-aware on auth)
+!/vendor/
+/vendor/*
+!/vendor/imsglobal/
+
+/.idea
+Homestead.json
+Homestead.yaml
+.env
+.DS_Store
+composer.phar
+
+public/fonts
+public/css
+public/js
+public/mix-manifest.json
+
+deploy-config.php
+public/deploy.php
+
+storage/debugbar

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="115" height="115" viewBox="0 0 115 115">
+  <g fill="none" fill-rule="evenodd">
+    <path stroke="#333" stroke-width="8" d="M66.959462,10 L21,10 L21,105 L94,105 L94,37.040538 L66.959462,10 Z"/>
+    <path stroke="#333" stroke-linecap="square" stroke-width="8" d="M64.5 10L64.5 39.5178515M94 39.5178515L64.5 39.5178515"/>
+    <text fill="#333" font-family="TradeGothicLTStd-Bold, Trade Gothic LT Std" font-size="24" font-weight="bold">
+      <tspan x="38" y="85">PPT</tspan>
+    </text>
+  </g>
+</svg>

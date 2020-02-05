@@ -1,0 +1,1 @@
+<img src="/storage/{{$block->path}}" alt="" class="{{$block->node->setting('display')}}" />

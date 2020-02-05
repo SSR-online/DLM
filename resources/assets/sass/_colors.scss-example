@@ -1,0 +1,9 @@
+$primary-color: #007482;
+$secondary-color: #C10252;
+$sidebar-color: #e9e9e9;
+$text-color:  	#4b4f50;
+$visited-color: #8e013c;
+$active-color: 	#cd0157;
+$light-background-color: #eeeeee;
+$button-hover-color: #d9025c;
+$button-active-color: #ab0249;

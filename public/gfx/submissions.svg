@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="115" height="115" viewBox="0 0 115 115">
+  <defs>
+    <polygon id="submissions-a" points="27.146 15 55.904 22.063 34.758 55.972 6 48.909"/>
+    <mask id="submissions-d" width="49.904" height="40.972" x="0" y="0" fill="#fff">
+      <use xlink:href="#submissions-a"/>
+    </mask>
+    <polygon id="submissions-b" points="24.146 8 52.904 15.063 31.758 48.972 3 41.909"/>
+    <mask id="submissions-e" width="57.904" height="48.972" x="-4" y="-4">
+      <rect width="57.904" height="48.972" x="-1" y="4" fill="#fff"/>
+      <use xlink:href="#submissions-b"/>
+    </mask>
+    <polygon id="submissions-c" points="21.146 0 49.904 7.063 28.758 40.972 0 33.909"/>
+    <mask id="submissions-f" width="57.904" height="48.972" x="-4" y="-4">
+      <rect width="57.904" height="48.972" x="-4" y="-4" fill="#fff"/>
+      <use xlink:href="#submissions-c"/>
+    </mask>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <circle cx="58" cy="58" r="43" fill="#333" stroke="#333" stroke-width="10"/>
+    <g transform="rotate(21 -37.933 123.933)">
+      <use stroke="#FFF" stroke-width="16" mask="url(#submissions-d)" xlink:href="#submissions-a"/>
+      <use fill="#FFF" xlink:href="#submissions-b"/>
+      <use stroke="#333" stroke-width="8" mask="url(#submissions-e)" xlink:href="#submissions-b"/>
+      <g>
+        <use fill="#FFF" xlink:href="#submissions-c"/>
+        <use stroke="#333" stroke-width="8" mask="url(#submissions-f)" xlink:href="#submissions-c"/>
+      </g>
+    </g>
+  </g>
+</svg>

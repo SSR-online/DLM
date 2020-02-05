@@ -1,0 +1,30 @@
+@extends('layouts.app')
+
+@section('title')
+Selecteer blok
+@endsection
+
+@section('sidebar')
+	@include('node.nav', ['id' => ''])
+@endsection
+
+@section('content')
+<div class="add_options">
+<<<<<<< HEAD
+	<a class="add_section" href="{{$urlPrefix}}/block/create/text">✚ Tekstblok</a>
+	<a class="add_section" href="{{$urlPrefix}}/block/create/aside">✚ Noot</a>
+	<a class="add_section" href="{{$urlPrefix}}/block/create/link">✚ Linkblok</a>
+	<a class="add_section" href="{{$urlPrefix}}/block/create/quiz">✚ Quiz</a>
+	<a class="add_section" href="{{$urlPrefix}}/block/create/question">✚ Losse vraag</a>
+	<a class="add_section" href="{{$urlPrefix}}/block/create/h5p">✚ H5P-module</a>
+=======
+	<a class="add_section" href="/module/{{$module->id}}/node/{{$node->id}}/block/create/text">✚ Tekstblok</a>
+	<a class="add_section" href="/module/{{$module->id}}/node/{{$node->id}}/block/create/image">✚ Afbeelding</a>
+	<a class="add_section" href="/module/{{$module->id}}/node/{{$node->id}}/block/create/aside">✚ Noot</a>
+	<a class="add_section" href="/module/{{$module->id}}/node/{{$node->id}}/block/create/link">✚ Linkblok</a>
+	<a class="add_section" href="/module/{{$module->id}}/node/{{$node->id}}/block/create/quiz">✚ Quiz</a>
+	<a class="add_section" href="/module/{{$module->id}}/node/{{$node->id}}/block/create/question">✚ Losse vraag</a>
+	<a class="add_section" href="/module/{{$module->id}}/node/{{$node->id}}/block/create/h5p">✚ H5P-module</a>
+>>>>>>> imageblock
+</div>
+@endsection
