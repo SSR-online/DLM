@@ -1,5 +1,6 @@
 /node_modules
 /public/storage
+!/resources/assets/themes/
 resources/assets/themes/*
 /public/hot
 /storage/*.key
