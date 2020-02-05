@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9ce9f1ec230a0f26c6a887dc87f3c9a4",
+    "content-hash": "2c5e94496c73fc59c248ccfaf7b8a9d1",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -558,46 +558,6 @@
             "time": "2018-05-16T13:16:34+00:00"
         },
         {
-            "name": "imsglobal/lti",
-            "version": "3.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/IMSGlobal/LTI-Tool-Provider-Library-PHP.git",
-                "reference": "06b12f70c2803ee08da116bcda2951eefd411ac9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/IMSGlobal/LTI-Tool-Provider-Library-PHP/zipball/06b12f70c2803ee08da116bcda2951eefd411ac9",
-                "reference": "06b12f70c2803ee08da116bcda2951eefd411ac9",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.6.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "IMSGlobal\\LTI\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "Stephen Vickers",
-                    "email": "svickers@imsglobal.org"
-                }
-            ],
-            "description": "LTI Tool Provider Library",
-            "homepage": "https://www.imsglobal.org/lti",
-            "keywords": [
-                "LTI"
-            ],
-            "time": "2016-09-18T04:22:22+00:00"
-        },
-        {
             "name": "jakub-onderka/php-console-color",
             "version": "v0.2",
             "source": {
@@ -1086,6 +1046,7 @@
                 "cron",
                 "schedule"
             ],
+            "abandoned": "dragonmantank/cron-expression",
             "time": "2017-01-23T04:29:33+00:00"
         },
         {
@@ -3832,6 +3793,7 @@
                 "mock",
                 "xunit"
             ],
+            "abandoned": true,
             "time": "2018-08-09T05:50:03+00:00"
         },
         {
