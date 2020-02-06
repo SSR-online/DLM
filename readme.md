@@ -28,7 +28,7 @@ Besides the admin user account (which has read/write access to all content) all 
 
 On the consumer side, settings for Moodle:
 - the tool-URL for DLM is `https://<application-domain>/lti`
-- The consumer key can be chosen freely
+- The consumer key is the domain of the Moodle application
 - the shared secret needs to be the secret generated in DLM.
 
 Linking to a module in DLM needs to follow this format: `https://<application-domain>/lti/<module-id>`. The module ID can be found at the end of the URL when opening a module in DLM. The regular URL for a module follows this format: `https://<application-domain>/module/<module-id>`
