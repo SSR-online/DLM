@@ -212,4 +212,4 @@ require('tinymce/plugins/image');
 require('tinymce/plugins/lists');
 require('tinymce/plugins/media');
 require('tinymce/plugins/table');
-const basicLightbox = require('basicLightbox')
+const basicLightbox = require('basiclightbox')
