@@ -19,7 +19,7 @@ mix.js(['resources/assets/js/app.js',
 		'resources/assets/js/discussions.js',
 		'resources/assets/js/sortable.js',
 		'resources/assets/js/videoplayers.js',
-		'node_modules/basicLightbox/dist/basicLightbox.min.js'], 'public/js').version();
+		'node_modules/basicLightbox/dist/basiclightbox.min.js'], 'public/js').version();
 
 mix.scripts(['resources/assets/js/MediasitePlayerIFrameAPI.js'], 'public/js/MediasitePlayerIFrameAPI.js');
 mix.scripts(['resources/assets/js/polyfills.js'], 'public/js/polyfills.js');
