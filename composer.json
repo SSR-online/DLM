@@ -28,7 +28,7 @@
         ],
         "psr-4": {
             "App\\": "app/",
-            "IMSGlobal\\LTI\\": "Vendor/imsglobal/lti/src/"
+            "IMSGlobal\\LTI\\": "vendor/imsglobal/lti/src/"
         }
     },
     "autoload-dev": {
