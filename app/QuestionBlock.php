@@ -210,9 +210,10 @@ class QuestionBlock extends Block
     	return $totals;
     }
 
-    private function add_answer_option() {
+    private function add_answer_option( $content = '', $is_correct = 0) {
     	$answer_option = new AnswerOption();
-        $answer_option->content = '';
+        $answer_option->content = $content;
+        $answer_option->is_correct = $is_correct;
         $answer_option->question()->associate($this);
         $answer_option->save();
     }
@@ -334,6 +335,10 @@ class QuestionBlock extends Block
 		return false;
 	}
 
+	public function serializeChildren() {
+		$this->answers = $this->answers()->get();
+	}
+
     public function hydrateFromImport($object) {
     	$this->title = $object->title;
     	$this->slug = $object->slug;
@@ -342,7 +347,10 @@ class QuestionBlock extends Block
         $this->question = $object->question;
         $this->feedback_correct = $object->feedback_correct;
         $this->feedback_incorrect = $object->feedback_incorrect;
-                
+        $this->save();
+        foreach($object->answers as $answer) {
+        	$this->add_answer_option($answer->content, $answer->is_correct);
+        }
     	return parent::hydrateFromImport($object);
     }
 }

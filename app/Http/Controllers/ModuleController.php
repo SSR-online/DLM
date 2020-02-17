@@ -165,6 +165,9 @@ class ModuleController extends Controller
         $zip_name = 'module-' . $module->id . '-tmp.dlm';
         $files = [];
         foreach($module->nodes as $node) {
+            if($node->block) {
+                $node->block->serializeChildren();
+            }
             if($node->block && in_array(class_basename($node->block), ['ImageBlock', 'FileBlock'])) {
                 $files[] = $node->block->path;
             }

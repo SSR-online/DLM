@@ -58,10 +58,16 @@ class ModuleImporter extends Controller
     //Import all files in their relative place, except the contents.json file, images and files are supported
     private function importFiles($path, $oldModuleId) {
         if(file_exists($path . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . $oldModuleId)) {
-            rename($path . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . $oldModuleId, storage_path('app/public/images/' . $this->module->id));
+            if(!file_exists(storage_path('app' . DIRECTORY_SEPARATOR .'public' . DIRECTORY_SEPARATOR .'images'))) {
+                mkdir(storage_path('app' . DIRECTORY_SEPARATOR .'public' . DIRECTORY_SEPARATOR .'images'));
+            }
+            rename($path . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . $oldModuleId, storage_path('app' . DIRECTORY_SEPARATOR .'public' . DIRECTORY_SEPARATOR .'images' . DIRECTORY_SEPARATOR . $this->module->id));
         }
         if(file_exists($path . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . $oldModuleId)) {
-            rename($path . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . $oldModuleId, storage_path('app/public/files/' . $this->module->id));
+            if(!file_exists(storage_path('app' . DIRECTORY_SEPARATOR .'public' . DIRECTORY_SEPARATOR .'files'))) {
+                mkdir(storage_path('app' . DIRECTORY_SEPARATOR .'public' . DIRECTORY_SEPARATOR .'files'));
+            }
+            rename($path . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . $oldModuleId, storage_path('app' . DIRECTORY_SEPARATOR .'public' . DIRECTORY_SEPARATOR .'files' . DIRECTORY_SEPARATOR . $this->module->id));
         }
     }
 
@@ -130,8 +136,8 @@ class ModuleImporter extends Controller
         }
         $blockObject = $nodeObject->block;
         
-        if($nodeObject->block_type == 'App\ImageBlock') {
-            $blockObject->path = $this->changeImagePath($blockObject->path);
+        if($nodeObject->block_type == 'App\ImageBlock' || $nodeObject->block_type == 'App\FileBlock') {
+            $blockObject->path = $this->changePath($blockObject->path);
         }
         
         $block->hydrateFromImport($blockObject);
@@ -140,10 +146,10 @@ class ModuleImporter extends Controller
         $newNode->save();
     }
 
-    private function changeImagePath($path) {
+    private function changePath($path) {
         if($path == null) { return; }
         $path_parts = explode(DIRECTORY_SEPARATOR, $path);
-        if(count($path_parts) != 3) { Log::error('No valid image path found'); return; }
+        if(count($path_parts) != 3) { Log::error('No valid path found'); return; }
         $path_parts[1] = $this->module->id;
         $new_path = implode(DIRECTORY_SEPARATOR, $path_parts);
         return $new_path;

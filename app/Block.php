@@ -51,6 +51,10 @@ class Block extends Model
 		
 	}
 
+	public function serializeChildren() {
+		return null;
+	}
+
 	public function hydrateFromImport($object) {
 		if(property_exists($object, 'settings')) { $this->settings = $object->settings; }
 		return $this;

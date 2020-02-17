@@ -57,4 +57,9 @@ class FileBlock extends Block
         $this->addSetting('display', $display);
 		$this->node->save();
     }
+
+    public function hydrateFromImport($object) {
+        $this->path = $object->path;
+        return parent::hydrateFromImport($object);
+    }
 }
