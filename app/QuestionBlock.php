@@ -18,14 +18,14 @@ class QuestionBlock extends Block
 
 	public $allowed_types = [
 		'mc' => 'Multiple Choice',
-		'order' => 'Sort',
-		'open' => 'Open',
+		'order' => 'Sorteren',
+		'open' => 'Open vraag',
 		'poll' => 'Poll'
 	];
 
 	private $attempt_for_user = false;
 
-	static $displayName = 'Question';
+	static $displayName = 'Vraag';
 
 	public function __construct(array $attributes = []) {
 		parent::__construct($attributes);
@@ -348,9 +348,12 @@ class QuestionBlock extends Block
         $this->feedback_correct = $object->feedback_correct;
         $this->feedback_incorrect = $object->feedback_incorrect;
         $this->save();
-        foreach($object->answers as $answer) {
-        	$this->add_answer_option($answer->content, $answer->is_correct);
-        }
+
+        if(property_exists($object, 'answers')) {
+	        foreach($object->answers as $answer) {
+	        	$this->add_answer_option($answer->content, $answer->is_correct);
+	        }
+	    }
     	return parent::hydrateFromImport($object);
     }
 }

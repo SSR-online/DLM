@@ -160,10 +160,10 @@ class ModuleController extends Controller
 
     public function export( Module $module ) {
         $module = Module::with(['nodes.block', 'nodes.layouts.slots'])->find($module)->first();
-        $json = $module->toJson(JSON_PRETTY_PRINT);
         $zip = new ZipArchive();
         $zip_name = 'module-' . $module->id . '-tmp.dlm';
         $files = [];
+
         foreach($module->nodes as $node) {
             if($node->block) {
                 $node->block->serializeChildren();
@@ -175,6 +175,7 @@ class ModuleController extends Controller
 
             }
         }
+        $json = $module->toJson(JSON_PRETTY_PRINT);
         if(!File::exists(storage_path('app/tmp/'))) {
             File::makeDirectory(storage_path('app/tmp'));
         }
