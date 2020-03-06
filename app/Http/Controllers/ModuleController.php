@@ -50,8 +50,11 @@ class ModuleController extends Controller
 
         //If the user has visited recently, open last seen page
         if($lastDate->add($interval) > $now) {
-            $node_id = $module->nodes()->find($preferences->last_node_seen)->id;
-            return redirect('/module/' . $module->id . '/' . $node_id);
+            $node = $module->nodes()->find($preferences->last_node_seen);
+            if($node) {
+                return redirect('/module/' . $module->id . '/' . $node->id);
+            }
+            return;
         }
     }
 
