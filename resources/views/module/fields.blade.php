@@ -51,4 +51,4 @@
 	</label>
 </fieldset>
 
-<input type="submit" value="Opslaan" />
+<input type="submit" value="@lang("Save")" />
