@@ -187,7 +187,7 @@ class NodeController extends Controller
     // TODO: Edit the slot for this node as well (remove, if ancestor has a slot, always?)
     public function moveToTargetNode( Node $node, Node $targetnode = null) { 
         $this->authorize('update', $node);
-        if($targetnode) {
+        if($targetnode && $targetnode->id != $node->id) {
             $node->parent()->associate($targetnode);
         } else {
             $node->parent()->dissociate();
@@ -200,10 +200,12 @@ class NodeController extends Controller
 
     public function moveToTargetSlot( Node $node, LayoutSlot $targetslot, $position = 'top' ) { 
         $this->authorize('update', $node);
-        $node->layoutSlot()->associate($targetslot);
         // Set parent to the first ancestor that's a page, because a node 
         // directly in a layout slot is always a child of the page.
-        $node->parent()->associate($node->page());
+        if($node->page()->id != $node->id) {
+            $node->parent()->associate($node->page());
+            $node->layoutSlot()->associate($targetslot);
+        }
         if($position == 'top') {
             $node->sort_order = 0;
         } else {

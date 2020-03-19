@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Log;
 use ZipArchive;
 use File;
 use Response;
@@ -123,6 +124,10 @@ class ModuleController extends Controller
         }
 
     	foreach($module->nodes as $node) {
+            if($node->parent && $node->id == $node->parent->id) {
+                $node->parent()->dissociate(); //Remove circular reference
+                Log::info('Removed a circular reference in module ' . $module->id . ' for node ' . $node->id);
+            }
     		if( $request->has('node_sort_order_' . $node->id)) {
     			$node->sort_order = $request->input('node_sort_order_' . $node->id);
     			$node->save();
