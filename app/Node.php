@@ -312,6 +312,7 @@ class Node extends Model {
 		$descendants = $this->children->load(['children', 'block']);
 		if($this->children) {
 			foreach($this->children as $child) {
+				if($this->child->id == $this->id) { continue; } //Prevent running through circular references
 				$descendants = $descendants->merge($child->descendants());
 			}
 		}
