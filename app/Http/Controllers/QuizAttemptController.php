@@ -66,7 +66,7 @@ class QuizAttemptController extends Controller
 		
 		$quiz_attempt->complete = $this->is_complete($node, Auth::user()->id);
 		$quiz_attempt->save();
-
+		$question->updateAttemptForUser($attempt->user_id, $quiz_attempt->id);
 
 		if($node->block->feedback_type == 'direct') {
 			// Keep the next display on this question, since we want

@@ -14,6 +14,8 @@ class QuizBlock extends Block
 	static $displayName = 'Quiz';
 
 	private $current_user_attempts = null;
+	private $allow_navigation = null;
+	private $question_attempts = null;
 
 	public $childTypes = [
 		'App\TextBlock',
@@ -36,6 +38,33 @@ class QuizBlock extends Block
 	       ->orderBy('updated_at', 'DESC')->get();
 		}
 		return $this->current_user_attempts;
+	}
+
+	public function questionAttemptForUser($questionNode, $userid = null) {
+		$attempt = false;
+		$attempts = $this->questionAttemptsForUser($userid);
+		if($attempts) {
+			$attempt = $attempts->firstWhere('question_id', $questionNode->block->id);
+		}
+		return $attempt;
+	}
+
+	public function questionAttemptsForUser( $user_id = null) {
+		if($this->questionAttempts) { return $this->questionAttempts; }
+
+		if(!$user_id) { $user_id = Auth::user()->id; }
+		$quizAttempt = QuizAttempt::where('quiz_id', $this->id)
+			->where('user_id', $user_id)
+			->orderBy('updated_at', 'desc')
+			->first();
+		if(!$quizAttempt) { return null; }
+		$questionAttempts = [];
+		$questionAttempts = QuestionAttempt::where('user_id', $user_id)
+				->where('quiz_attempt_id', $quizAttempt->id)
+				->orderBy('created_at', 'desc')->get();
+		
+		$this->questionAttempts = $questionAttempts;
+		return $questionAttempts;
 	}
 	/**
 	 * @return QuizAttempts collection
@@ -141,9 +170,14 @@ class QuizBlock extends Block
 	}
 
 	public function getAllowNavigationAttribute( $value ) {
-		if($value == true) { return true; }
-		if(optional($this->current_user_attempt())->complete) { return true; }
-		if(session('isediting')) { return true; }
+		if($this->allow_navigation !== null) {
+			return $this->allow_navigation;
+		}
+		$value = false;
+		if($value == true) { $value = true; }
+		if(optional($this->current_user_attempt())->complete) { $value = true; }
+		if(session('isediting')) { $value = true; }
+		$this->allow_navigation = $value;
 		return $value;
 	}
 

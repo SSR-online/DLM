@@ -20,6 +20,7 @@ class QuestionAttemptController extends Controller
 		$attempt->answer = $request->get('answer');
 		$question->attempts()->save($attempt);
 		$attempt->save();
+		$question->updateAttemptForUser($attempt->user_id);
 
 		//Return the rendered question(results) block in a json response
 		if($request->get('returnJson') == 'true') {
