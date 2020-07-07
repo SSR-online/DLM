@@ -30,14 +30,6 @@
 		<label>@lang("Quizzes"): <input type="number" name="score_by_quiz_percentage" class="inline" value="{{ $module->setting('score_by_quiz_percentage') }}"> @lang('percent')</label>
 </fieldset>
 
-<fieldset>
-	<legend>@lang('Order')</legend>
-	@foreach( $module->nodes->sortBy('sort_order') as $node )
-	<label>{{$node->title}}
-		<input type="number" name="node_sort_order_{{$node->id}}"value="{{ $node->sort_order }}" />
-	</label>
-	@endforeach
-</fieldset>
 
 <fieldset>
 	<label>@lang("Category")
@@ -49,6 +41,15 @@
 	<label class="inline">
 		<input type="checkbox" name="archive" />@lang("Archive")</label>
 	</label>
+</fieldset>
+
+<fieldset>
+	<legend>@lang('Order')</legend>
+	@foreach( $module->nodes->sortBy('sort_order') as $node )
+	<label>{{$node->title}}
+		<input type="number" name="node_sort_order_{{$node->id}}"value="{{ $node->sort_order }}" />
+	</label>
+	@endforeach
 </fieldset>
 
 <input type="submit" value="@lang("Save")" />

@@ -12,7 +12,7 @@ DLM - {{ $tagline }}
 
 @section('content')
 <a href="{{$archiveurl}}">@lang('Show archived modules')</a>
-<table>
+<table class="compressed">
 	<thead>
 		<tr>
 			<th><a class="sortable {{$sort['title']['order']}}" href="{{$sort['title']['url']}}">@lang('Title')</a></th>

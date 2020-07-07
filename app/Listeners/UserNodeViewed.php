@@ -45,7 +45,6 @@ class UserNodeViewed
             //Provide score to LTI provider
             if($event->node->module->setting('score_by') == 'pages') {
                 if(!empty($user->lti_consumer)) {
-                    Log::info('returning score by pages seen');
                     $provider = new LTIServiceProvider();
                     $score = $event->node->module->scoreForUser(\Auth::user());
                     if($event->node->module->setting('score_threshold') == null || ($event->node->module->setting('score_threshold') / 100) <= $score) {
