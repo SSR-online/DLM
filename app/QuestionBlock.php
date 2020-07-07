@@ -60,9 +60,24 @@ class QuestionBlock extends Block
 		return $this->hasMany('App\QuestionAttempt', 'question_id');
 	}
 
-	public function attemptForUser( $user_id = null, $quizAttempt = null ) {
-		// if(array_key_exists($this->attempt_for_user !== false) { return $this->attempt_for_user; }
+	/**
+	 * Reset the instance variable, so the attempt is fresh from DB. Used when changing the attempts.
+	 * @return [type] [description]
+	 */
+	public function updateAttemptForUser( $user_id = null, $quiz_attempt_id = null) {
 		if(!$user_id) { $user_id = Auth::user()->id; }
+		if($quiz_attempt_id && array_key_exists($user_id . '_' . $quiz_attempt_id, $this->attempt_for_user)) {
+		 	$this->attempt_for_user[$user_id . '_' . $quiz_attempt_id] = false;
+		} else if(array_key_exists($user_id, $this->attempt_for_user)) {
+			$this->attempt_for_user[$user_id] = false;	
+		}
+	}
+
+	public function attemptForUser( $user_id = null, $quizAttempt = null ) {
+		if(!$user_id) { $user_id = Auth::user()->id; }
+		if(!$quizAttempt && $this->attempt_for_user !== false && array_key_exists($user_id, $this->attempt_for_user) && $this->attempt_for_user[$user_id] !== false) { 
+			return $this->attempt_for_user[$user_id]; 
+		}
 		if(class_basename(optional($this->node->parent)->block) == 'QuizBlock') {
 			if(!$quizAttempt) {
 				$quizAttempt = QuizAttempt::where('quiz_id', $this->node->parent->block->id)
@@ -71,7 +86,7 @@ class QuestionBlock extends Block
 					->first();
 			}
 			if(!$quizAttempt) {
-				// $this->attempt_for_user = null;
+				$this->attempt_for_user[$user_id] = null;
 				return null;
 			}
 			$attempt = $this->attempts()
@@ -79,11 +94,11 @@ class QuestionBlock extends Block
 				->where('quiz_attempt_id', $quizAttempt->id)
 				->orderBy('created_at', 'desc')
 				->first();
-			return $attempt;
-			// return $this->attempt_for_user;
+			$this->attempt_for_user[$user_id . '_' . $quizAttempt->id] = $attempt;
+			return $this->attempt_for_user[$user_id . '_' . $quizAttempt->id];
 		}
-		return $this->attempts()->where('user_id', $user_id)->orderBy('created_at', 'desc')->first();
-		// return $this->attempt_for_user;
+		$this->attempt_for_user[$user_id] = $this->attempts()->where('user_id', $user_id)->orderBy('created_at', 'desc')->first();
+		return $this->attempt_for_user[$user_id];
 	}
 
 	public function answerForUser( $user_id = null, $quizAttempt = null ) {
