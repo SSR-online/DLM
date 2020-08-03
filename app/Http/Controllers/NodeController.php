@@ -202,10 +202,8 @@ class NodeController extends Controller
         $this->authorize('update', $node);
         // Set parent to the first ancestor that's a page, because a node 
         // directly in a layout slot is always a child of the page.
-        if($node->page()->id != $node->id) {
-            $node->parent()->associate($node->page());
-            $node->layoutSlot()->associate($targetslot);
-        }
+        $node->parent()->associate($targetslot->layout->node);
+        $node->layoutSlot()->associate($targetslot);
         if($position == 'top') {
             $node->sort_order = 0;
         } else {
