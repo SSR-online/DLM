@@ -122,6 +122,7 @@ class ModuleController extends Controller
         } else {
             $module->archived = null;
         }
+        $module->category = $request->input('category');
 
     	foreach($module->nodes as $node) {
             if($node->parent && $node->id == $node->parent->id) {

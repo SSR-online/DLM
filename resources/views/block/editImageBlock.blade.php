@@ -10,17 +10,17 @@
 <fieldset>
 	<label>
 		@lang("Alternative text (describe the image)"):
-		<input type="text" name="alt" />
+		<input type="text" name="alt" value="{{$node->block->alt}}" />
 	</label>
 	<label>
 		@lang("Description (optional longer description, for instance for diagrams)")
-		<textarea name="longdesc"></textarea>
+		<textarea name="longdesc">{{$node->block->longdesc}}</textarea>
 	</label>
 	<label>
 		@lang("Display"):
 		<select name="display">
-			<option value="hero">@lang("Full width")</option>
-			<option value="lightbox">@lang("Popup")</option>
+			<option value="hero" @if($node->setting('display')=="hero")selected="selected"@endif>@lang("Full width")</option>
+			<option value="lightbox" @if($node->setting('display')=="lightbox")selected="selected"@endif>@lang("Popup")</option>
 			{{-- <option value="aside">Naast tekstblok</option> --}}
 			{{-- <option value="inset">In tekstblok</option> --}}
 		</select>

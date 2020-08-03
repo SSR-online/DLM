@@ -1,39 +1,32 @@
 @import '_reset';
 @import '_fonts';
-@import '_colors';
 
 /**
  *  colors: 
  *  
- *  $secondary-color petrol
- *  $primary-color magenta
- *  $sidebar-color light grey (sidebar bg)
- *  $text-color body text
- *
- *  $visited-color visited links
- *  $active-color active links
- *  #333 	background header
- *  
+ *  #007482 petrol
+ *  #C10252 magenta
+ *  #e9e9e9 light grey
  */
 
 body {
-	font-family: sans-serif;
+	font-family: "TradeGothic", sans-serif;
 	font-size: 1.125em;
 	line-height: 1.25;
-	color: $text-color;
+	color: #4b4f50;
 	text-rendering: optimizeLegibility;
 	hyphens: auto;
 	margin-bottom: 0;
 }
 
 a {
-	color: $primary-color;
+	color: #C10252;
 	text-decoration: none;
 	font-weight: bold;
 }
 
 a:visited {
-	color: $visited-color;
+	color: #8e013c;
 }
 
 a:hover, a:focus, a:active {
@@ -41,7 +34,7 @@ a:hover, a:focus, a:active {
 }
 
 a:active {
-	color: $active-color;
+	color: #cd0157;
 }
 
 img {
@@ -49,7 +42,7 @@ img {
 }
 
 nav.main { 
-	background: $primary-color;
+	background: #C10252 url('/gfx/ssrlogo-text.svg') top left no-repeat;
 }
 
 nav.main ul {
@@ -84,7 +77,7 @@ nav.main a:hover {
 }
 
 #sidebar {
-	background-color: $sidebar-color;
+	background-color: #e9e9e9;
 	padding-top: .5em;
 	position: relative;
 	width: 100vw;
@@ -116,7 +109,7 @@ nav.main a:hover {
 }
 
 #sidebar a {
-	color: $text-color;
+	color: #4b4f50;
 	text-decoration: none;
 	padding: .75em 1em .5em 2em;
 	display: block;
@@ -182,7 +175,7 @@ nav.main a:hover {
 
 #sidebar a:hover, #sidebar a:focus, {
 	text-decoration: underline;
-	color: $primary-color;
+	color: #C10252;
 }
 
 #sidebar li a.quiz {
@@ -270,13 +263,13 @@ nav.main a:hover {
 }
 
 li.previous a, li.previous a:visited {
-	color: $primary-color;
+	color: #C10252;
 	padding: 1em 1em .75em 0;
 	display: inline-block;
 }
 
 #bottom .next a, button, input[type=submit] {
-	background: $primary-color;
+	background: #C10252;
 	color: white;
 	padding: 1em 1em .75em;
 	text-decoration: none;
@@ -288,8 +281,8 @@ li.previous a, li.previous a:visited {
 }
 
 header {
-	border-bottom: 1px solid $sidebar-color;
-	font-family: georgia, serif;
+	border-bottom: 1px solid #e9e9e9;
+	font-family: "MrsEaves", georgia, serif;
 	font-size: 2em;
 	padding: .5em 0 .25em;
 	margin: 0 0 .5em 0;
@@ -365,7 +358,7 @@ p + p, p + ul, ul + p {
 	}
 
 	section {
-		margin: .5em 0;
+		margin: 1em 0;
 		.link {
 			margin: 0;
 		}
@@ -374,8 +367,8 @@ p + p, p + ul, ul + p {
 
 aside, blockquote, #content blockquote, #content .sources { 
 	padding: 1em 1.5em;
-	background: $light-background-color;
-	border-left: 4px solid $secondary-color;
+	background: #eee;
+	border-left: 4px solid #007482;
 	margin: 1em 0;
 	opacity: 1;
 	max-width: 33.75rem; // -.25rem for the border
@@ -465,13 +458,13 @@ a.hasaside {
 
 a.hasaside::after {
 	content: "✲";
-	color: $secondary-color;
+	color: #007482;
 	margin-left: .125em;
 	font-size: .9em;
 }
 
 a.hasaside.active {
-	background: $secondary-color;
+	background: #007482;
 	text-decoration: underline;
 	color: white;
 	border-radius: .5em;
@@ -514,7 +507,7 @@ summary + aside {
 
 #content a.edit {
 	font-size: 1.25rem;
-	font-family: sans-serif;
+	font-family: "TradeGothic";
 	height: 1.5em;
 	line-height: 1.75;
 	text-align: left;
@@ -601,7 +594,7 @@ summary + aside {
 #content ul {
 	list-style: disc;
 	padding-left: 1em;
-	margin: 0;
+	margin: 1em 0 0 0;
 }
 
 #content ol {
@@ -644,18 +637,18 @@ button, input[type=submit] {
 
 button:hover, 
 input[type=submit]:hover {
-	background: $button-hover-color;
+	background: #d9025c;
 }
 
 button:active, 
 input[type=submit]:active {
-	background: $button-active-color;
+	background: #ab0249;
 }
 
 button.subtle, input[type=submit].subtle {
 	padding: 0;
 	background: transparent;
-	color: $text-color;
+	color: #4b4f50;
 	text-decoration: underline;
 }
 
@@ -667,19 +660,19 @@ input[type=submit].subtle:hover {
 
 button.subtle:active,
 input[type=submit].subtle:active {
-	color: $button-active-color;
+	color: #d9025c;
 }
 
 button.delete,
 input[type=submit].delete {
-	color: $primary-color;
+	color: #C10252;
 	text-decoration: underline;
 	background: none;
 }
 
 button.delete:hover,
 input[type=submit].delete:hover {
-	color: $button-hover-color;
+	color: #d9025c;
 	cursor: pointer;
 }
 
@@ -751,13 +744,13 @@ form label.error::after {
 form div.feedback.incorrect, div.incorrect {
 	background-color: #ffe8e5;
 	border-left: 4px solid #993333;
-	color: $text-color;
+	color: #4b4f50;
 }
 
 form div.feedback.correct, div.correct {
 	background-color: #dfefdf;
 	border-left: 4px solid #4a994c;
-	color: $text-color;
+	color: #4b4f50;
 }
 
 div.correct, div.incorrect {
@@ -796,7 +789,7 @@ section.quiz .quiz-content .next span {
 nav.quiz ol {
 	display: flex;
 	margin-bottom: 1em;	
-	border-bottom: 4px solid $primary-color;
+	border-bottom: 4px solid #C10252;
 }
 
 
@@ -821,7 +814,7 @@ nav.quiz a:hover {
 }
 
 nav.quiz li.current a, nav.quiz li.current span {
-	background: $primary-color;
+	background: #C10252;
 	color: white;
 	font-weight: bold;
 }
@@ -834,9 +827,9 @@ nav.quiz li.answered a, nav.quiz li.answered span {
 	padding-right: 1.5em;
 }
 
-// nav.quiz li.current a:hover {
-// 	background: rgba(194, 0, 82, 0.8);	
-// }
+nav.quiz li.current a:hover {
+	background: rgba(194, 0, 82, 0.8);	
+}
 
 .quiz a.results {
 	margin-top: 1em;
@@ -860,7 +853,7 @@ section.quiz .quiz-content.long nav ol {
 
 .long nav.quiz {
 	margin-right: .5em;
-	border-right: 4px solid $primary-color;
+	border-right: 4px solid #C10252;
 }
 
 .long nav.quiz ol {
@@ -983,7 +976,7 @@ form input[type=radio].img {
 }
 
 form input[type=radio].img:checked {
-	border-color: $primary-color;
+	border-color: #C10252;
 }
 
 form.inline {
@@ -1010,7 +1003,7 @@ table th {
 
 table th a,
 table th a:visited {
-	color: $text-color;
+	color: #4b4f50;
 	text-decoration: underline;
 }
 
@@ -1045,6 +1038,10 @@ table tbody {
 	padding-top: .5em;
 }
 
+table.compressed td {
+	padding: 0 0 0 .5em;
+}
+
 table td {
 	padding: .5em .5em .25em;
 }
@@ -1056,12 +1053,12 @@ table.compare {
 		border-bottom: 2px solid white;
 	}
 	thead tr {
-		background-color: $primary-color;
+		background-color: #C10252;
 		color: white;
 	}
 	tbody tr {
 		background-color: #eee;
-		color: $text-color;
+		color: #4b4f50;
 	}
 }
 
@@ -1073,7 +1070,7 @@ table.compare {
 }
 
 #content .highlight {
-	background: $secondary-color;
+	background: #007482;
 	color: white;
 	padding: 1em 1.5em;
 	max-width: 34rem;
@@ -1085,7 +1082,7 @@ table.compare {
 }
 
 #content .highlight a:hover {
-	color: $primary-color;
+	color: #C10252;
 }
 
 #content .goals::before {
@@ -1118,7 +1115,7 @@ table.compare {
 	padding: .75em 1em 1em 3.5em;
 	font-size: .9em;
 	line-height: 1.4;
-	max-width: 31.725rem;
+	max-width: 32.85rem;
 }
 
 #content .duration {
@@ -1241,7 +1238,7 @@ table.compare {
 }
 
 #content .sortable > .node:hover {
-	border-left: 3px solid $secondary-color;
+	border-left: 3px solid #007482;
 }
 
 #content .sortable > *:hover input {
@@ -1249,7 +1246,7 @@ table.compare {
 }
 
 #content .sortable > *:hover input[type=submit] {
-	background-color: $primary-color;
+	background-color: #C10252;
 }
 
 #content .sortable > *:hover input[type=submit].delete {
@@ -1280,7 +1277,7 @@ table.compare {
 }
 
 .isediting div.layout {
-	border-left: 3px solid $primary-color;
+	border-left: 3px solid #C10252;
 }
 
 .isediting .droptarget {
@@ -1329,13 +1326,13 @@ table.compare {
 .notice {
 	padding: 1em;
 	margin: 1em 0;
-	border-left: 4px solid $text-color;
+	border-left: 4px solid #4b4f50;
 	background-color: #eee;
 	max-width: 33.75rem;
 }
 
 .bar {
-	background: $secondary-color;
+	background: #007482;
 	color: white;
 	padding: .5em 0 .25em 0;
 	text-indent: .5em;
@@ -1347,7 +1344,7 @@ table.compare {
 
 .bar div.filled {
 	position: absolute;
-	background: $primary-color;
+	background: #C10252;
 	border-right: 2px solid white;
 	height: 100%;
 	top: 0;
@@ -1372,7 +1369,7 @@ table.compare {
 	display: block;
 	padding: 1em 1em .75em;
 	background: #eee;
-	border-left: 4px solid $primary-color;
+	border-left: 4px solid #C10252;
 	margin: 2px 0;
 	display: flex;
 	justify-content: space-between;
@@ -1380,11 +1377,11 @@ table.compare {
 }
 
  .link a.menu:visited {
- 	color: $primary-color;
+ 	color: #C10252;
  }
 
 .link a.menu:hover {
-	background: $primary-color;
+	background: #C10252;
 	color: white;
 	text-decoration: none;
 }
@@ -1412,6 +1409,7 @@ table.compare {
 
 .layout .slot {
 	box-sizing: border-box;
+	margin-top: 0;
 }
 
 div.video {
@@ -1457,7 +1455,7 @@ div.video {
 
 .video-overlay .nav {
 	padding: 1em;
-	background: $sidebar-color;
+	background: #e9e9e9;
 }
 
 .isediting .video-overlay {
@@ -1519,7 +1517,7 @@ div.video {
 
 .node.discussion form .discussionstatus {
 	background: #eee;
-	border-left: 4px solid $secondary-color;
+	border-left: 4px solid #007482;
 	border-top: 4px solid white;
 	padding: .5em;
 	font-size: .9em;
@@ -1535,7 +1533,7 @@ div.video {
 }
 
 .message.mine {
-	background: $secondary-color;
+	background: #007482;
 	color: white;
 	margin-left: 1em;
 	margin-right: 0;
@@ -1742,7 +1740,7 @@ div.video {
 //Turbolinks
 .turbolinks-progress-bar {
   height: 4px;
-  background-color: $secondary-color;
+  background-color: #007482;
   border: 1px solid white;
 }
 
